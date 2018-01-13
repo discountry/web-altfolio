@@ -1,6 +1,7 @@
 {
   "name": "web-altfolio",
   "version": "0.1.0",
+  "homepage": "http://altfolio.yubolun.com",
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.1.3",
