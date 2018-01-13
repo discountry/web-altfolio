@@ -74,18 +74,66 @@ export const possessionList = [
 ]
 
 export const watchList = [
-    'BTC',
-    'ETH',
-    'XRP',
-    'BCH',
-    'ADA',
-    'XEM',
-    'IOT',
-    'EOS',
-    'DASH',
-    'NEO',
-    'TRX',
-    'XMR',
+    {
+        symbol: 'BTC',
+        coinName: 'Bitcoin',
+        ImageUrl: '/media/19633/btc.png',
+    },
+    {
+        symbol: 'ETH',
+        coinName: 'Ethereum',
+        ImageUrl: '/media/20646/eth_logo.png',
+    },
+    {
+        symbol: 'XRP',
+        coinName: 'Ripple',
+        ImageUrl: '/media/19972/ripple.png',
+    },
+    {
+        symbol: 'BCH',
+        coinName: 'Bitcoin Cash / BCC',
+        ImageUrl: '/media/1383919/bch.jpg',
+    },
+    {
+        symbol: 'ADA',
+        coinName: 'Cardano',
+        ImageUrl: '/media/12318177/ada.png',
+    },
+    {
+        symbol: 'XEM',
+        coinName: 'NEM',
+        ImageUrl: '/media/20490/xem.png',
+    },
+    {
+        symbol: 'IOT',
+        coinName: 'IOTA',
+        ImageUrl: '/media/1383540/iota_logo.png',
+    },
+    {
+        symbol: 'EOS',
+        coinName: 'EOS',
+        ImageUrl: '/media/1383652/eos_1.png',
+    },
+    {
+        symbol: 'DASH',
+        coinName: 'DigitalCash',
+        ImageUrl: '/media/20626/imageedit_27_4355944719.png',
+    },
+    {
+        symbol: 'NEO',
+        coinName: 'NEO',
+        ImageUrl: '/media/1383858/neo.jpg',
+    },
+    {
+        symbol: 'TRX',
+        coinName: 'Tronix',
+        ImageUrl: '/media/12318089/trx.png',
+    },
+    {
+        symbol: 'XMR',
+        coinName: 'Monero',
+        ImageUrl: '/media/19969/xmr.png',
+    },
 ]
 
 export const selectList = [

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Picker, InputItem, List, WhiteSpace } from 'antd-mobile';
+import { Toast, Picker, InputItem, List, WhiteSpace } from 'antd-mobile';
 
 import {selectList, legalList} from '../config'
 
@@ -15,7 +15,13 @@ export default class ExchangeForm extends Component {
             rate: 100000,
         }
     }
+    loadingToast() {
+        Toast.loading('Loading...', 2, () => {
+          console.log('Load complete !!!');
+        });
+    }
     handleCryptoChange(crypto) {
+        this.loadingToast()
         axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${crypto[0]}&tsyms=${this.state.legal[0]}`)
         .then(res => {
             this.setState({
@@ -26,6 +32,7 @@ export default class ExchangeForm extends Component {
         })
     }
     handleLegalChange(legal) {
+        this.loadingToast()
         axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${this.state.crypto}&tsyms=${legal[0]}`)
         .then(res => {
             this.setState({ 

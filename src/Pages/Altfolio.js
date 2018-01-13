@@ -11,7 +11,7 @@ export default class Altfolio extends Component {
         super(props)
         this.state = {
             isLoading: false,
-            coinsList: localStorage.getItem("possessionList")? JSON.parse(localStorage.getItem("possessionList")) : possessionList,
+            coinsList: localStorage.getItem("possessionList") ? JSON.parse(localStorage.getItem("possessionList")) : possessionList,
             crypto: ['BTC'],
             cryptoValue: possessionList.find(this.isSymbol.bind(null,'BTC')).possession,
             modal: false,
@@ -32,13 +32,14 @@ export default class Altfolio extends Component {
         return crypto.symbol === symbol;
     }
     handleSubmit() {
-        let crypto = possessionList.find(this.isSymbol.bind(null,this.state.crypto[0]))
+        const newList = localStorage.getItem("possessionList") ? JSON.parse(localStorage.getItem("possessionList")) : possessionList
+        let crypto = newList.find(this.isSymbol.bind(null,this.state.crypto[0]))
         crypto.possession = this.state.cryptoValue
-        localStorage.setItem("possessionList", JSON.stringify(possessionList))
+        localStorage.setItem("possessionList", JSON.stringify(newList))
         this.setState({
-            coinsList: possessionList
+            coinsList: newList,
+            modal: false,
         })
-        this.onClose('modal')
     }
     showModal = key => (e) => {
         e.preventDefault(); // 修复 Android 上点击穿透
