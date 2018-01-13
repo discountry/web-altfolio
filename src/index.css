@@ -1,0 +1,37 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  /* user-select: none; */
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-title img {
+  width: 2rem;
+  height: 2rem;
+  margin-right: .5rem;
+}
+
+@supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+  .am-tabs-tab-bar-wrap {
+    margin-bottom: constant(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}
