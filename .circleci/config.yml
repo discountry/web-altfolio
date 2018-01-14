@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    branches:
+      only:
+        - master
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "0e:1b:88:51:4b:43:16:3e:22:bb:a3:a8:17:1c:a9:95"
+      - checkout
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - dependencies-
+      - run:
+          name: Install
+          command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Gatsby build site
+          command: yarn build
+      - run:
+          name: Prepare shell commands
+          command: cp .scripts/react-deploy.sh ../ && chmod +x ../react-deploy.sh
+      - run:
+          name: Run deploy scripts
+          command: ../react-deploy.sh
