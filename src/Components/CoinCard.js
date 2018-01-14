@@ -25,7 +25,7 @@ export default class CoinCard extends Component {
         })
     }
     render() {
-        if (this.props.possession == 0) {
+        if (+this.props.possession === 0) {
             return false
         } else {
             if (this.state.priceCNY > 0) {
