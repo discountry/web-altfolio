@@ -7,14 +7,8 @@ export default class Market extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLoading: true,
             coinsList: watchList,
         }
-    }
-    componentDidMount() {
-        setTimeout(() =>this.setState({ 
-            isLoading: !this.state.isLoading,
-        }),2000)
     }
     render() {
         return (

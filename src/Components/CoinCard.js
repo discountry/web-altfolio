@@ -3,6 +3,8 @@ import axios from 'axios'
 
 import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
 
+import Loading from './Loading'
+
 export default class CoinCard extends Component {
     constructor(props) {
         super(props)
@@ -24,26 +26,28 @@ export default class CoinCard extends Component {
         if (this.props.possession === 0) {
             return false
         } else {
-            return (
-                <WingBlank size="lg">
-                    {this.state.priceCNY > 0 &&
-                        <Card>
-                            <Card.Header
-                                title={this.props.coinName}
-                                thumb={`https://www.cryptocompare.com${this.props.ImageUrl}`}
-                                thumbStyle={{width:'2rem'}}
-                                extra={<span>{(this.props.possession ? (this.props.possession*this.state.priceCNY).toFixed(4) : this.state.priceCNY)+' ¥'}</span>}
-                            />
-                            <Card.Body style={{minHeight:0}}></Card.Body>
-                            <Card.Footer
-                                content={this.props.possession ? `${this.props.possession} ${this.props.symbol}`: this.props.symbol} 
-                                extra={<div>{(this.props.possession ? (this.props.possession*this.state.priceUSD).toFixed(4) : this.state.priceUSD)+' $'}</div>} 
-                            />
-                        </Card>
-                    }
-                    <WhiteSpace size="xs" />
-                </WingBlank>
-            )
+            if (this.state.priceCNY > 0) {
+                return (
+                    <WingBlank size="lg">
+                            <Card>
+                                <Card.Header
+                                    title={this.props.coinName}
+                                    thumb={`https://www.cryptocompare.com${this.props.ImageUrl}`}
+                                    thumbStyle={{width:'2rem'}}
+                                    extra={<span>{(this.props.possession ? (this.props.possession*this.state.priceCNY).toFixed(4) : this.state.priceCNY)+' ¥'}</span>}
+                                />
+                                <Card.Body style={{minHeight:0}}></Card.Body>
+                                <Card.Footer
+                                    content={this.props.possession ? `${this.props.possession} ${this.props.symbol}`: this.props.symbol} 
+                                    extra={<div>{(this.props.possession ? (this.props.possession*this.state.priceUSD).toFixed(4) : this.state.priceUSD)+' $'}</div>} 
+                                />
+                            </Card>
+                        <WhiteSpace size="xs" />
+                    </WingBlank>
+                )
+            } else {
+                return <Loading />
+            }
         }
     }
 }

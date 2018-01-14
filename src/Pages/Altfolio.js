@@ -20,7 +20,7 @@ export default class Altfolio extends Component {
     handleCryptoChange(crypto) {
         this.setState({
             crypto,
-            cryptoValue: possessionList.find(this.isSymbol.bind(null,crypto[0])).possession,
+            cryptoValue: this.state.coinsList.find(this.isSymbol.bind(null,crypto[0])).possession,
          })
     }
     handleCryptoValueChange(cryptoValue) {
@@ -65,14 +65,14 @@ export default class Altfolio extends Component {
                 <div className="page-container">
                     <CoinCardList {...this.state} />
                     <WhiteSpace />
-                    <Button onClick={this.showModal('modal')}>添加资产</Button>
+                    <Button onClick={this.showModal('modal')}>配置资产</Button>
                     <Modal
                     popup
                     visible={this.state.modal}
                     onClose={this.onClose('modal')}
                     animationType="slide-up"
                     >
-                    <List renderHeader={() => <div>添加资产</div>} className="popup-list">
+                    <List renderHeader={() => <div>配置资产</div>} className="popup-list">
                         <Picker key="crypto" 
                         value={this.state.crypto} 
                         data={selectList} 
@@ -90,7 +90,7 @@ export default class Altfolio extends Component {
                             updatePlaceholder
                         >代币金额</InputItem>
                         <List.Item>
-                        <Button type="primary" onClick={() => this.handleSubmit()}>买入</Button>
+                        <Button type="primary" onClick={() => this.handleSubmit()}>确认</Button>
                         </List.Item>
                     </List>
                     </Modal>

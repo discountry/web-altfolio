@@ -16,7 +16,7 @@ export default class ExchangeForm extends Component {
         }
     }
     loadingToast() {
-        Toast.loading('Loading...', 2, () => {
+        Toast.loading('Loading...', 1, () => {
           console.log('Load complete !!!');
         });
     }
