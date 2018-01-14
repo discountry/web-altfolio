@@ -8,7 +8,7 @@ git checkout gh-pages
 rm -rf *
 cp -r ../build/* ./
 git add -A
-git commit -m "update app at $(date)"
+git commit -m "update app at $(date) [ci skip]"
 git push -u origin gh-pages
 rm -rf ../build
 
