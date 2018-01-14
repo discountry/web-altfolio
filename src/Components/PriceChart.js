@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 export default class PriceChart extends Component {
   render() {
@@ -10,7 +10,8 @@ export default class PriceChart extends Component {
           <Line type="monotone" dataKey="price" stroke="#8884d8" />
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="time" />
-          <YAxis unit=" $" />
+          <YAxis unit="$" />
+          <Tooltip />
         </LineChart>
       </ResponsiveContainer>
     )

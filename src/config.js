@@ -189,11 +189,11 @@ export const selectList = [
 
 export const legalList = [
     {
-        label: 'China Yuan',
+        label: '人民币',
         value: 'CNY',
     },
     {
-        label: 'US Dollar',
+        label: '美元',
         value: 'USD',
     },
 ]

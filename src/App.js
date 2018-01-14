@@ -31,7 +31,7 @@ class App extends Component {
           barTintColor="white"
         >
           <TabBar.Item
-            title="Altfolio"
+            title="资产"
             key="Altfolio"
             icon={<div style={{
               width: '22px',
@@ -70,7 +70,7 @@ class App extends Component {
                 background: 'url(https://png.icons8.com/dusk/50/000000/statistics.png) center center /  21px 21px no-repeat' }}
               />
             }
-            title="Market"
+            title="行情"
             key="Market"
             selected={this.state.selectedTab === 'marketTab'}
             onPress={() => {
@@ -84,7 +84,7 @@ class App extends Component {
           <TabBar.Item
             icon={{ uri: 'https://png.icons8.com/wired/50/000000/bank-cards.png' }}
             selectedIcon={{ uri: 'https://png.icons8.com/dusk/50/000000/bank-cards.png' }}
-            title="Exchange"
+            title="汇率"
             key="Exchange"
             selected={this.state.selectedTab === 'exchangeTab'}
             onPress={() => {

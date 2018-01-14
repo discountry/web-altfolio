@@ -60,7 +60,7 @@ export default class Altfolio extends Component {
             <div>
                 <div className="page-title">
                     <img alt="altfolio-icon" src="https://png.icons8.com/dusk/50/000000/currency.png" />
-                    <h2>Altfolio</h2>
+                    <h2>资产</h2>
                 </div>
                 <div className="page-container">
                     <CoinCardList {...this.state} />

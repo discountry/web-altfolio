@@ -1,14 +1,43 @@
 import React, { Component } from 'react'
+import { Modal } from 'antd-mobile'
 
 import CoinCard from './CoinCard'
+import ChartTab from './ChartTab'
+
 
 export default class CoinCardList extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            modal: false,
+            symbol: 'BTC',
+        }
+    }
+    toggleModal = () => {
+        this.setState({
+            modal: !this.state.modal
+        })
+    }
+    handleShowModal = (symbol) => {
+        this.setState({
+            symbol,
+            modal: !this.state.modal
+        })
+    }
     render() {
         return (
             <div>
                 {this.props.coinsList.map(info => {
-                    return <CoinCard key={info.coinName} {...info} />
+                    return <CoinCard key={info.coinName} {...info} handleShowModal={this.handleShowModal} />
                 })}
+                <Modal
+                    popup
+                    visible={this.state.modal}
+                    onClose={this.toggleModal}
+                    animationType="slide-up"
+                    >
+                    <ChartTab symbol={this.state.symbol} />
+                </Modal>
             </div>
         )
     }

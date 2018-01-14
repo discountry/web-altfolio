@@ -15,7 +15,7 @@ export default class Market extends Component {
             <div>
                 <div className="page-title">
                     <img alt="market-icon" src="https://png.icons8.com/dusk/50/000000/statistics.png" />
-                    <h2>Market</h2>
+                    <h2>行情</h2>
                 </div>
                 <div className="page-container">
                     <CoinCardList {...this.state} />

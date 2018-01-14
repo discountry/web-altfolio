@@ -65,7 +65,7 @@ export default class ExchangeForm extends Component {
                     onChange={v => this.handleCryptoChange(v)}
                     onOk={v => this.handleCryptoChange(v)}
                     cols={1}>
-                        <List.Item arrow="horizontal">CryptoCurrency</List.Item>
+                        <List.Item arrow="horizontal">代币类型</List.Item>
                     </Picker>
                     <InputItem
                         type="money"
@@ -81,7 +81,7 @@ export default class ExchangeForm extends Component {
                     onChange={v => this.handleLegalChange(v)}
                     onOk={v => this.handleLegalChange(v)}
                     cols={1}>
-                        <List.Item arrow="horizontal">LegalCurrency</List.Item>
+                        <List.Item arrow="horizontal">法币类型</List.Item>
                     </Picker>
                     <InputItem
                         type="money"
