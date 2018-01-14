@@ -11,7 +11,9 @@ export default class Loading extends Component {
                     <Card>
                         <Card.Header />
                         <Card.Body style={{minHeight:0}}>
-                            <div className="body-placeholder animated-background"></div>
+                            <div className="body-placeholder-lg animated-background"></div>
+                            <WhiteSpace size="xs" />
+                            <div className="body-placeholder-md animated-background"></div>
                         </Card.Body>
                         <Card.Footer />
                     </Card>

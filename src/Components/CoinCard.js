@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { formatPriceData } from '../Utils'
 
-import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
-
+import { Toast, Modal, List, Card, WingBlank, WhiteSpace } from 'antd-mobile'
+import PriceChart from './PriceChart'
 import Loading from './Loading'
 
 export default class CoinCard extends Component {
@@ -11,7 +12,38 @@ export default class CoinCard extends Component {
         this.state = {
             priceUSD: 0,
             priceCNY: 0,
+            modal: false,
+            data: [
+                {
+                    time: 'Mon',
+                    price: 90000,
+                },
+                {
+                    time: 'Thu',
+                    price: 100000,
+                },
+                {
+                    time: 'Thur',
+                    price: 120000,
+                },
+            ]
         }
+    }
+    toggleModal = () => {
+        this.setState({
+            modal: !this.state.modal
+        })
+    }
+    fetchPriceHistory = () => {
+        Toast.loading('Loading...', 0);
+        axios.get(`http://coincap.io/history/7day/${this.props.symbol}`)
+        .then(res => {
+            Toast.hide()
+            this.setState({ 
+                data: formatPriceData(res.data.price),
+                modal: !this.state.modal,
+             })
+        })
     }
     componentDidMount() {
         axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${this.props.symbol}&tsyms=USD,CNY`)
@@ -29,7 +61,7 @@ export default class CoinCard extends Component {
             if (this.state.priceCNY > 0) {
                 return (
                     <WingBlank size="lg">
-                            <Card>
+                            <Card onClick={this.fetchPriceHistory}>
                                 <Card.Header
                                     title={this.props.coinName}
                                     thumb={`https://www.cryptocompare.com${this.props.ImageUrl}`}
@@ -43,6 +75,18 @@ export default class CoinCard extends Component {
                                 />
                             </Card>
                         <WhiteSpace size="xs" />
+                        <Modal
+                            popup
+                            visible={this.state.modal}
+                            onClose={this.toggleModal}
+                            animationType="slide-up"
+                            >
+                            <List renderHeader={() => <div>{this.props.symbol} 价格走势</div>} className="popup-list">
+                                <List.Item>
+                                    <PriceChart data={this.state.data} />
+                                </List.Item>
+                            </List>
+                        </Modal>
                     </WingBlank>
                 )
             } else {

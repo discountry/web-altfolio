@@ -70,7 +70,7 @@ export default class Altfolio extends Component {
                     popup
                     visible={this.state.modal}
                     onClose={this.onClose('modal')}
-                    animationType="slide-up"
+                    animationType="slide-down"
                     >
                     <List renderHeader={() => <div>配置资产</div>} className="popup-list">
                         <Picker key="crypto" 
@@ -82,7 +82,7 @@ export default class Altfolio extends Component {
                             <List.Item arrow="horizontal">代币类型</List.Item>
                         </Picker>
                         <InputItem
-                            type="digit"
+                            type="money"
                             placeholder="how much"
                             value={this.state.cryptoValue}
                             onChange={v => this.handleCryptoValueChange(v)}

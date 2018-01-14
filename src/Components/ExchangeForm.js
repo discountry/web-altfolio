@@ -15,15 +15,11 @@ export default class ExchangeForm extends Component {
             rate: 100000,
         }
     }
-    loadingToast() {
-        Toast.loading('Loading...', 1, () => {
-          console.log('Load complete !!!');
-        });
-    }
     handleCryptoChange(crypto) {
-        this.loadingToast()
+        Toast.loading('Loading...', 0);
         axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${crypto[0]}&tsyms=${this.state.legal[0]}`)
         .then(res => {
+            Toast.hide()
             this.setState({
                 crypto,
                 legalValue: (this.state.cryptoValue*res.data[this.state.legal[0]]).toFixed(4),
@@ -32,9 +28,10 @@ export default class ExchangeForm extends Component {
         })
     }
     handleLegalChange(legal) {
-        this.loadingToast()
+        Toast.loading('Loading...', 0);
         axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${this.state.crypto}&tsyms=${legal[0]}`)
         .then(res => {
+            Toast.hide()
             this.setState({ 
                 legal,
                 cryptoValue: (this.state.legalValue/res.data[legal]).toFixed(4),

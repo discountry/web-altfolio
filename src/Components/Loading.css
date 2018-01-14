@@ -20,7 +20,12 @@
   position: relative;
 }
 
-.body-placeholder {
+.body-placeholder-lg {
   height: 1rem;
   width: 100%;
+}
+
+.body-placeholder-md {
+  height: 1rem;
+  width: 50%;
 }
