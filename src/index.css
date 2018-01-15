@@ -20,7 +20,8 @@ body {
 .page-title {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
+  margin-left: 1rem;
 }
 
 .page-title img {
