@@ -8,6 +8,7 @@ export default class CoinCard extends Component {
         super(props)
         this.state = {
             data: {},
+            isLoading: true,
             modalEnable: true,
         }
     }
@@ -24,6 +25,7 @@ export default class CoinCard extends Component {
         .then(res => {
             this.setState({
                 data: res.data.RAW[this.props.symbol].CNY,
+                isLoading: false,
              })
         })
     }
@@ -31,7 +33,7 @@ export default class CoinCard extends Component {
         if (+this.props.possession === 0) {
             return false
         } else {
-            if (this.state.data) {
+            if (!this.state.isLoading) {
                 const changePercentage = this.state.data.CHANGE24HOUR/this.state.data.HIGH24HOUR
                 return (
                     <WingBlank size="lg">
