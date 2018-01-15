@@ -11,7 +11,7 @@ export default class Market extends Component {
         super(props)
         this.state = {
             coinsList: store.get("customizedList") ? store.get("customizedList") : watchList,
-            symbol: 'BTC',
+            symbol: '',
             modal: false,
         }
     }
