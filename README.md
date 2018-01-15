@@ -8,6 +8,12 @@
 * [CryptoCompare API](https://www.cryptocompare.com/api/)
 * [icons8](https://icons8.cn)
 
+## TODO
+
+* [ ] 排序
+* [ ] ethereum 钱包
+* [ ] TOKEN 交易
+
 ## Changelog
 
 ### 2018-01-15
