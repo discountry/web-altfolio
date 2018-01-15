@@ -1,34 +1,18 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 
 import { Card, WingBlank, WhiteSpace } from 'antd-mobile'
 import Loading from './Loading'
 
 export default class CoinCard extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            priceUSD: 0,
-            priceCNY: 0,
-        }
-    }
     handleShowModal = () => {
         this.props.handleShowModal(this.props.symbol)
-    }
-    componentDidMount() {
-        axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${this.props.symbol}&tsyms=USD,CNY`)
-        .then(res => {
-            this.setState({ 
-                priceUSD: res.data.USD,
-                priceCNY: res.data.CNY,
-             })
-        })
     }
     render() {
         if (+this.props.possession === 0) {
             return false
         } else {
-            if (this.state.priceCNY > 0) {
+            if (this.props.PRICE > 0) {
+                const changePercentage = this.props.CHANGE24HOUR/this.props.HIGH24HOUR
                 return (
                     <WingBlank size="lg">
                             <Card onClick={this.handleShowModal}>
@@ -36,12 +20,14 @@ export default class CoinCard extends Component {
                                     title={this.props.coinName}
                                     thumb={`https://www.cryptocompare.com${this.props.ImageUrl}`}
                                     thumbStyle={{width:'2rem'}}
-                                    extra={<span>{(this.props.possession ? (this.props.possession*this.state.priceCNY).toFixed(4) : this.state.priceCNY)+' ¥'}</span>}
+                                    extra={<span>{(this.props.possession ? (this.props.possession*this.props.PRICE).toFixed(2) : parseFloat(this.props.PRICE).toFixed(2))+' ¥'}</span>}
                                 />
                                 <Card.Body style={{minHeight:0}}></Card.Body>
                                 <Card.Footer
                                     content={this.props.possession ? `${this.props.possession} ${this.props.symbol}`: this.props.symbol} 
-                                    extra={<div>{(this.props.possession ? (this.props.possession*this.state.priceUSD).toFixed(4) : this.state.priceUSD)+' $'}</div>} 
+                                    extra={<div style={{
+                                        color: changePercentage >= 0 ? 'forestgreen' : 'crimson'
+                                    }}>{this.props.possession ? (this.props.possession*this.props.CHANGE24HOUR).toFixed(2)+' ¥' : (changePercentage*100).toFixed(2)+' %'}</div>}
                                 />
                             </Card>
                         <WhiteSpace size="xs" />

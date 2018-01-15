@@ -30,6 +30,11 @@ body {
   margin-right: .5rem;
 }
 
+.page-title .am-icon-search {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
 @supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
   .am-tabs-tab-bar-wrap {
     margin-bottom: constant(safe-area-inset-bottom);

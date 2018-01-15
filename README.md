@@ -6,5 +6,4 @@
 * [Rechart](http://recharts.org)
 * [Antd-mobile](https://mobile.ant.design/index-cn)
 * [CryptoCompare API](https://www.cryptocompare.com/api/)
-* [CoinCap](https://github.com/CoinCapDev/CoinCap.io)
 * [icons8](https://icons8.cn)

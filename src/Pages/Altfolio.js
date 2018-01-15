@@ -5,22 +5,23 @@ import { Picker, InputItem, Modal, List, Button, WhiteSpace } from 'antd-mobile'
 
 import CoinCardList from '../Components/CoinCardList'
 import {selectList} from '../config'
+import {store, isSymbol} from '../Utils'
 
 export default class Altfolio extends Component {
     constructor(props) {
         super(props)
         this.state = {
             isLoading: false,
-            coinsList: localStorage.getItem("possessionList") ? JSON.parse(localStorage.getItem("possessionList")) : possessionList,
+            coinsList: store.get("possessionList") ? store.get("possessionList") : possessionList,
             crypto: ['BTC'],
-            cryptoValue: possessionList.find(this.isSymbol.bind(null,'BTC')).possession,
+            cryptoValue: possessionList.find(isSymbol.bind(null,'BTC')).possession,
             modal: false,
         }
     }
     handleCryptoChange(crypto) {
         this.setState({
             crypto,
-            cryptoValue: this.state.coinsList.find(this.isSymbol.bind(null,crypto[0])).possession,
+            cryptoValue: this.state.coinsList.find(isSymbol.bind(null,crypto[0])).possession,
          })
     }
     handleCryptoValueChange(cryptoValue) {
@@ -28,14 +29,11 @@ export default class Altfolio extends Component {
             cryptoValue,
         })
     }
-    isSymbol(symbol, crypto) { 
-        return crypto.symbol === symbol;
-    }
     handleSubmit() {
-        const newList = localStorage.getItem("possessionList") ? JSON.parse(localStorage.getItem("possessionList")) : possessionList
-        let crypto = newList.find(this.isSymbol.bind(null,this.state.crypto[0]))
+        const newList = store.get("possessionList") ? store.get("possessionList") : possessionList
+        let crypto = newList.find(isSymbol.bind(null,this.state.crypto[0]))
         crypto.possession = this.state.cryptoValue
-        localStorage.setItem("possessionList", JSON.stringify(newList))
+        store.set("possessionList", JSON.stringify(newList))
         this.setState({
             coinsList: newList,
             modal: false,
@@ -52,9 +50,6 @@ export default class Altfolio extends Component {
           [key]: false,
         });
     }
-    componentDidUpdate() {
-        console.log(this.state.coinsList)
-    }
     render() {
         return (
             <div>
@@ -63,7 +58,7 @@ export default class Altfolio extends Component {
                     <h2>资产</h2>
                 </div>
                 <div className="page-container">
-                    <CoinCardList {...this.state} />
+                    <CoinCardList coinsList={this.state.coinsList} />
                     <WhiteSpace />
                     <Button onClick={this.showModal('modal')}>配置资产</Button>
                     <Modal

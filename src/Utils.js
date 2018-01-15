@@ -6,10 +6,17 @@ export const formatPriceData = (originalData, unit) => {
     if (i === 0) {
       return true
     }
-    return moment(v[0]).format(unit)!==moment(originalData[i-1][0]).format(unit)
+    return moment.unix(v.time).format(unit)!==moment.unix(originalData[i-1].time).format(unit)
   }).map(value => ({
-    time: moment(value[0]).format(unit),
-    price: value[1]
+    time: moment.unix(value.time).format(unit),
+    '价格': value.close,
   }))
   return formatedData
+}
+
+export const isSymbol = (symbol, crypto) => crypto.symbol === symbol
+
+export const store = {
+  set: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
+  get: (key) => JSON.parse(localStorage.getItem(key)),
 }
