@@ -8,6 +8,10 @@
 * [CryptoCompare API](https://www.cryptocompare.com/api/)
 * [icons8](https://icons8.cn)
 
+## TODO
+
+* [] 排序
+
 ## Changelog
 
 ### 2018-01-15
