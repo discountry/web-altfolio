@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import {possessionList} from '../config'
-
 import { Picker, InputItem, Modal, List, Button, WhiteSpace } from 'antd-mobile';
 
 import CoinCardList from '../Components/CoinCardList'
-import {selectList} from '../config'
+import {possessionList, selectList} from '../config'
 import {store, isSymbol} from '../Utils'
 
 export default class Altfolio extends Component {
@@ -33,7 +31,7 @@ export default class Altfolio extends Component {
         const newList = store.get("possessionList") ? store.get("possessionList") : possessionList
         let crypto = newList.find(isSymbol.bind(null,this.state.crypto[0]))
         crypto.possession = this.state.cryptoValue
-        store.set("possessionList", JSON.stringify(newList))
+        store.set("possessionList", newList)
         this.setState({
             coinsList: newList,
             modal: false,
@@ -43,12 +41,12 @@ export default class Altfolio extends Component {
         e.preventDefault(); // 修复 Android 上点击穿透
         this.setState({
           [key]: true,
-        });
+        })
     }
     onClose = key => () => {
         this.setState({
           [key]: false,
-        });
+        })
     }
     render() {
         return (
@@ -67,7 +65,7 @@ export default class Altfolio extends Component {
                     onClose={this.onClose('modal')}
                     animationType="slide-down"
                     >
-                    <List renderHeader={() => <div>配置资产</div>} className="popup-list">
+                    <List renderHeader={() => <div>配置资产</div>}>
                         <Picker key="crypto" 
                         value={this.state.crypto} 
                         data={selectList} 

@@ -14,7 +14,7 @@ export const formatPriceData = (originalData, unit) => {
   return formatedData
 }
 
-export const isSymbol = (symbol, crypto) => crypto.symbol === symbol
+export const isSymbol = (symbol, crypto) => crypto.symbol === symbol || crypto.Symbol === symbol
 
 export const store = {
   set: (key, value) => localStorage.setItem(key, JSON.stringify(value)),

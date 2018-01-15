@@ -35,6 +35,15 @@ body {
   margin-right: 1rem;
 }
 
+.am-swipe {
+  border-radius: 5px;
+}
+
+.am-swipe-btn {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 @supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
   .am-tabs-tab-bar-wrap {
     margin-bottom: constant(safe-area-inset-bottom);
