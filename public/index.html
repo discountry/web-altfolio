@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
     <meta name="theme-color" content="#000000">
     <!--
       manifest.json provides metadata used when your web app is added to the
@@ -43,7 +43,7 @@
       if ((screen.availHeight == 812) && (screen.availWidth == 375)) {
           if ((window.innerHeight == "375") && (window.innerWidth == "812")) {
             // iPhone X Landscape
-          
+            document.querySelector(".page-container").style.marginLeft = '2rem'
           } else {
             // iPhone X Portrait
             document.querySelector(".am-tabs-tab-bar-wrap").style.marginBottom = '.8rem'
