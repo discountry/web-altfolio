@@ -16,6 +16,13 @@ export default class Altfolio extends Component {
             modal: false,
         }
     }
+    handleremoveFromList = (symbol) => {
+        const removedList = this.state.coinsList.filter(v=>v.symbol !== symbol)
+        store.set("possessionList", removedList)
+        this.setState({
+            coinsList: removedList
+        })
+    }
     handleCryptoChange(crypto) {
         this.setState({
             crypto,
@@ -56,7 +63,7 @@ export default class Altfolio extends Component {
                     <h2>资产</h2>
                 </div>
                 <div className="page-container">
-                    <CoinCardList coinsList={this.state.coinsList} />
+                    <CoinCardList handleremoveFromList={this.handleremoveFromList} coinsList={this.state.coinsList} />
                     <WhiteSpace />
                     <Button onClick={this.showModal('modal')}>配置资产</Button>
                     <Modal
