@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NoticeBar } from 'antd-mobile'
 import ExchangeForm from '../Components/ExchangeForm'
-
+import Wallet from '../Components/Wallet'
 
 export default class Exchange extends Component {
     render() {
@@ -16,6 +16,7 @@ export default class Exchange extends Component {
                 </div>
                 <div className="page-container">
                     <ExchangeForm />
+                    <Wallet />
                 </div>
             </div>
         )

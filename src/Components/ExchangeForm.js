@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Toast, Picker, InputItem, List, WhiteSpace } from 'antd-mobile';
+import { Toast, Picker, InputItem, List, WhiteSpace } from 'antd-mobile'
 
 import {selectList, legalList} from '../config'
 
@@ -92,6 +92,7 @@ export default class ExchangeForm extends Component {
                         updatePlaceholder
                     >法币金额</InputItem>
                 </List>
+                <WhiteSpace size="lg" />
             </div>
         )
     }
