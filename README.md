@@ -6,7 +6,7 @@
 * [Rechart](http://recharts.org)
 * [Antd-mobile](https://mobile.ant.design/index-cn)
 * [CryptoCompare API](https://www.cryptocompare.com/api/)
-* [EtherScan](https://etherscan.io/apis)
+* [Etherscan](https://etherscan.io/apis)
 * [icons8](https://icons8.cn)
 
 ## TODO
