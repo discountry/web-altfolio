@@ -12,8 +12,7 @@
 ## TODO
 
 * [ ] 排序
-* [ ] ethereum 钱包
-* [ ] TOKEN 交易
+* [ ] Ethereum 交易
 
 ## Changelog
 
