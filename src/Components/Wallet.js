@@ -27,18 +27,18 @@ export default class Wallet extends Component {
     Toast.loading('查询中...',0)
     axios.get(`https://api.etherscan.io/api?module=account&action=balance&address=${this.state.address}&tag=latest&apikey=R3NUDUUSHIEWFW28XUKXJNWSDPVGCEGMKI`)
     .then(res => {
-        Toast.hide()
         this.setState({
           balance: res.data.result,
         })
         if (res.data.result > 0) {
           store.set('walletAddress', this.state.address)
           this.fetchTransations()
+        } else {
+          Toast.hide()
         }
     })
   }
   fetchTransations() {
-    Toast.loading('查询中...',0)
     axios.get(`https://api.etherscan.io/api?module=account&action=txlist&address=${this.state.address}&startblock=0&endblock=99999999&page=1&sort=desc&apikey=R3NUDUUSHIEWFW28XUKXJNWSDPVGCEGMKI`)
     .then(res => {
         Toast.hide()
