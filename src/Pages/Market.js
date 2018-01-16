@@ -36,14 +36,14 @@ export default class Market extends Component {
                 const customizedList = [...this.state.coinsList, {
                     symbol: info.Symbol,
                     coinName: info.CoinName,
-                    ImageUrl: info.ImageUrl,
+                    ImageUrl: `${info.Symbol.toLowerCase()}.png`,
                 }]
                 store.set("customizedList", customizedList)
                 this.setState(prevState => ({
                     coinsList: [...prevState.coinsList, {
                         symbol: info.Symbol,
                         coinName: info.CoinName,
-                        ImageUrl: info.ImageUrl,
+                        ImageUrl: `${info.Symbol.toLowerCase()}@2x.png`,
                     }],
                     modal: false,
                   }))

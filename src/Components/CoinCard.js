@@ -51,7 +51,7 @@ export default class CoinCard extends Component {
                             <Card onClick={this.handleShowModal}>
                                 <Card.Header
                                     title={this.props.coinName}
-                                    thumb={`https://www.cryptocompare.com${this.props.ImageUrl}`}
+                                    thumb={`/icon/${this.props.ImageUrl}`}
                                     thumbStyle={{width:'2rem'}}
                                     extra={<span>{(this.props.possession ? (this.props.possession*this.state.data.PRICE).toFixed(2) : parseFloat(this.state.data.PRICE).toFixed(2))+' ¥'}</span>}
                                 />
