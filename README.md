@@ -8,11 +8,15 @@
 * [CryptoCompare API](https://www.cryptocompare.com/api/)
 * [Etherscan](https://etherscan.io/apis)
 * [icons8](https://icons8.cn)
+* [web3](https://web3js.readthedocs.io/en/1.0/web3.html)
+* [ethereumjs-accounts](https://github.com/SilentCicero/ethereumjs-accounts)
+* [ethereumjs-tx](https://github.com/ethereumjs/ethereumjs-tx)
 
 ## TODO
 
-* [ ] 排序
-* [ ] Ethereum 交易
+* [ ] Ethereum 账户导入
+* [ ] Ethereum 提交转账
+* [ ] Ethereum 创建钱包
 
 ## Changelog
 
