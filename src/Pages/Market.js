@@ -29,7 +29,7 @@ export default class Market extends Component {
     }
     addSymbol() {
         Toast.loading('查询中...',0)
-        axios.get(`https://min-api.cryptocompare.com/data/all/coinlist`)
+        axios.get(`coinlist.json`)
         .then(res => {
             if (res.data.Data.hasOwnProperty(this.state.symbol)) {
                 const info = res.data.Data[this.state.symbol]

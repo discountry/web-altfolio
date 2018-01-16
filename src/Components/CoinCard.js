@@ -23,10 +23,22 @@ export default class CoinCard extends Component {
     componentDidMount() {
         axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${this.props.symbol}&tsyms=CNY`)
         .then(res => {
-            this.setState({
-                data: res.data.RAW[this.props.symbol].CNY,
-                isLoading: false,
-             })
+            if (res.data.Response === "Error") {
+                this.setState({
+                    data: {
+                        "Error": true,
+                        "PRICE": 1,
+                        "HIGH24HOUR": 1,
+                        "CHANGE24HOUR": 1,
+                        },
+                    isLoading: false,
+                 })
+            } else {
+                this.setState({
+                    data: res.data.RAW[this.props.symbol].CNY,
+                    isLoading: false,
+                 })
+            }
         })
     }
     render() {
@@ -55,7 +67,9 @@ export default class CoinCard extends Component {
                                     thumbStyle={{width:'2rem'}}
                                     extra={<span>{(this.props.possession ? (this.props.possession*this.state.data.PRICE).toFixed(2) : parseFloat(this.state.data.PRICE).toFixed(2))+' ¥'}</span>}
                                 />
-                                <Card.Body style={{minHeight:0}}></Card.Body>
+                                <Card.Body style={{minHeight:0}}>
+                                    {this.state.data.Error && '未查询到相关信息'}
+                                </Card.Body>
                                 <Card.Footer
                                     content={this.props.possession ? `${this.props.possession} ${this.props.symbol}`: this.props.symbol} 
                                     extra={<div style={{
