@@ -2,6 +2,7 @@ html, body {
   width: 100%;
   height: 102%;
   user-select: none;
+  overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
