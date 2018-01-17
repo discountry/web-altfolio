@@ -28,8 +28,7 @@ export default class CoinCard extends Component {
                     data: {
                         "Error": true,
                         "PRICE": 1,
-                        "HIGH24HOUR": 1,
-                        "CHANGE24HOUR": 1,
+                        "OPENDAY": 1,
                         },
                     isLoading: false,
                  })
@@ -46,7 +45,7 @@ export default class CoinCard extends Component {
             return false
         } else {
             if (!this.state.isLoading) {
-                const changePercentage = this.state.data.CHANGE24HOUR/this.state.data.HIGH24HOUR
+                const changePercentage = (this.state.data.PRICE-this.state.data.OPENDAY)/this.state.data.OPENDAY
                 return (
                     <WingBlank size="lg">
                         <SwipeAction
@@ -74,7 +73,7 @@ export default class CoinCard extends Component {
                                     content={this.props.possession ? `${this.props.possession} ${this.props.symbol}`: this.props.symbol} 
                                     extra={<div style={{
                                         color: changePercentage >= 0 ? 'forestgreen' : 'crimson'
-                                    }}>{this.props.possession ? (this.props.possession*this.state.data.CHANGE24HOUR).toFixed(2)+' ¥' : (changePercentage*100).toFixed(2)+' %'}</div>}
+                                    }}>{this.props.possession ? (this.props.possession*this.state.data.PRICE*changePercentage).toFixed(2)+' ¥' : (changePercentage*100).toFixed(2)+' %'}</div>}
                                 />
                             </Card>
                         </SwipeAction>
