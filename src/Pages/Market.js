@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { NoticeBar, Icon, Button, InputItem, Modal, List, Toast } from 'antd-mobile'
+import { Icon, Button, InputItem, Modal, List, Toast } from 'antd-mobile'
 import axios from 'axios'
 import {watchList} from '../config'
 import {store} from '../Utils'
 
+import NoticeBar from '../Components/NoticeBar'
 import CoinCardList from '../Components/CoinCardList'
 
 export default class Market extends Component {
@@ -68,8 +69,8 @@ export default class Market extends Component {
     render() {
         return (
             <div>
-                <NoticeBar mode="link" action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://otcbtc.com/referrals/WERYIS">去看看</a>}>
-                    微信/支付宝购买比特币，上OTCBTC！
+                <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://otcbtc.com/referrals/WERYIS">去看看</a>}>
+                    OTCBTC 是目前最流畅、最靠谱、最好用的场外交易平台，支持支付宝、微信、银行卡支付购买BTC、ETH、EOS、USDT、QTUM、ZEC、GXS、BCH 等数字币。现在注册，即可领取比特币红包！
                 </NoticeBar>
                 <div className="page-title">
                     <img alt="market-icon" src="https://png.icons8.com/dusk/50/000000/statistics.png" />

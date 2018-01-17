@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { NoticeBar, Picker, InputItem, Modal, List, Button, WhiteSpace } from 'antd-mobile'
+import { Picker, InputItem, Modal, List, Button, WhiteSpace } from 'antd-mobile'
 
+import NoticeBar from '../Components/NoticeBar'
 import CoinCardList from '../Components/CoinCardList'
 import {possessionList, selectList} from '../config'
 import {store, isSymbol} from '../Utils'
@@ -58,8 +59,8 @@ export default class Altfolio extends Component {
     render() {
         return (
             <div>
-                <NoticeBar marqueeProps={{ loop: true }} mode="link" action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://www.binance.com/?ref=20768006">领奖励</a>}>
-                    最好用的交易平台币安，注册领取奖励！
+                <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://www.binance.com/?ref=20768006">领奖励</a>}>
+                    交易量大，充提款快，币种全，最好用的加密货币交易平台币安，现在注册领取奖励！
                 </NoticeBar>
                 <div className="page-title">
                     <img alt="altfolio-icon" src="https://png.icons8.com/dusk/50/000000/currency.png" />
