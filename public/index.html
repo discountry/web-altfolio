@@ -61,6 +61,7 @@
       var Clist = SON.parse(localStorage.getItem('customizedList'))
       if(PList[0].ImageUrl !== 'btc@2x.png' || CList[0].ImageUrl !== 'btc@2x.png') {
         localStorage.clear()
+        location.reload()
       }
     }
   </script>
