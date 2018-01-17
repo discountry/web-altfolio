@@ -2,12 +2,13 @@ html, body {
   width: 100%;
   height: 100%;
   user-select: none;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
 #root {
   height: 100%;
-  overflow: scroll;
+  /*overflow: scroll;*/
 }
 
 body {
