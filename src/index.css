@@ -1,6 +1,7 @@
 html, body {
   width: 100%;
   height: 102%;
+  margin-left: calc(100vw - 100%);
   user-select: none;
   overflow-x: hidden;
   overflow-y: scroll;
