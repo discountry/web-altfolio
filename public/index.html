@@ -56,9 +56,10 @@
   </script>
   <script>
     // For Old Users
-    if(localStorage.getItem('possessionList')) {
-      var oldList = JSON.parse(localStorage.getItem('possessionList'))
-      if(oldList[0].ImageUrl !== 'btc@2x.png') {
+    if(localStorage.getItem('possessionList') || localStorage.getItem('customizedList')) {
+      var PList = JSON.parse(localStorage.getItem('possessionList'))
+      var Clist = SON.parse(localStorage.getItem('customizedList'))
+      if(PList[0].ImageUrl !== 'btc@2x.png' || CList[0].ImageUrl !== 'btc@2x.png') {
         localStorage.clear()
       }
     }
