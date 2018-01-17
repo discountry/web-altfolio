@@ -21,6 +21,10 @@
 
 **ETH** `0x6A7C3051aAd0deff081A8E9b5a6a0d7e0e53F95C`
 
+## LICENSE
+
+[GNU](https://github.com/discountry/web-altfolio/blob/master/LICENSE)
+
 ## TODO
 
 * [ ] 排序
