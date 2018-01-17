@@ -1,5 +1,4 @@
 html {
-  margin-left: calc(100vw - 100%);
   user-select: none;
 }
 
@@ -10,9 +9,6 @@ html, body {
 
 #root {
   height: 100%;
-}
-
-.am-tab-bar-item > div {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
