@@ -16,7 +16,8 @@ class App extends Component {
 
   renderContent(Page) {
     return (
-      <div style={{ height: '100%' }}>
+      <div>
+        <div className="blur-block"></div>
         <Page />
       </div>
     );
@@ -24,7 +25,7 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+      <div style={{ height: '100%', width: '100%' }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
