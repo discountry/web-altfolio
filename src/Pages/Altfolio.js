@@ -59,8 +59,8 @@ export default class Altfolio extends Component {
     render() {
         return (
             <div>
-                <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://www.binance.com/?ref=20768006">领奖励</a>}>
-                    交易量大，充提款快，币种全，最好用的加密货币交易平台币安，现在注册领取奖励！
+                <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://candy.one/i/3579384">领糖果</a>}>
+                    来 Candy Box 免费领取糖果，仅可邀请注册，名额有限快上车！
                 </NoticeBar>
                 <div className="page-title">
                     <img alt="altfolio-icon" src="https://png.icons8.com/dusk/50/000000/currency.png" />
