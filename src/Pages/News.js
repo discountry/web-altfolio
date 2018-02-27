@@ -16,12 +16,9 @@ export default class News extends Component {
           isLoading: true
       }
     }
-    renderNews() {
-
-    }
     componentDidMount() {
         Toast.loading('载入中...', 0)
-        axios.get(`https://crossorigin.me/http://www.bishijie.com/api/news/?size=20`)
+        axios.get(`https://crossorigin.me/http://www.bishijie.com/api/news/?size=100`)
         .then(res => {
             Toast.hide()
             if (res.data.error !== 0) {
