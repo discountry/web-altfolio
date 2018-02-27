@@ -3,11 +3,11 @@ import axios from 'axios'
 import ethers from 'ethers'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
-import { Icon, Steps, Toast, InputItem, List, WhiteSpace, Modal } from 'antd-mobile'
+import { Icon, Steps, Toast, InputItem, List, WhiteSpace, Modal, Button, Badge } from 'antd-mobile'
 
 import {store} from '../Utils'
 
-window.ethers = ethers
+// window.ethers = ethers
 
 export default class Wallet extends Component {
   constructor(props) {
@@ -79,6 +79,19 @@ export default class Wallet extends Component {
         })
     })
   }
+  createWallet() {
+    const newWallet = ethers.Wallet.createRandom()
+    this.setState({
+      newAddress: newWallet.address,
+      newMnemonic: newWallet.mnemonic,
+      newPrivateKey: newWallet.privateKey,
+      address: newWallet.address,
+      privateKey: newWallet.privateKey,
+      modal2: true,
+    })
+    store.set('walletAddress', newWallet.address)
+    store.set('walletPrivateKey', newWallet.privateKey)
+  }
   async confirmTransaction() {
     if (this.state.privateKey && this.state.amount && this.state.transferAddress) {
       Toast.loading('提交中...',0)
@@ -112,6 +125,16 @@ export default class Wallet extends Component {
         <div className="page-title">
           <img alt="wallet-icon" src="https://png.icons8.com/dusk/50/000000/wallet.png" />
           <h2>以太坊钱包</h2>
+          <Badge text="创建钱包" onClick={() => this.createWallet()}
+            style={{
+              marginLeft: 12,
+              padding: '0 3px',
+              backgroundColor: '#fff',
+              borderRadius: 2,
+              color: '#f19736',
+              border: '1px solid #f19736',
+            }}
+          />
         </div>
         <WhiteSpace size="lg" />
         <List style={{ backgroundColor: 'white' }}>
@@ -204,6 +227,28 @@ export default class Wallet extends Component {
               <li>您在使用 AltFolio 时发生任何财产损失均由您本人承担全部责任。</li>
             </ul>
           </div>
+        </Modal>
+        <WhiteSpace />
+        <Modal
+          popup
+          visible={this.state.modal2}
+          onClose={this.onClose('modal2')}
+          animationType="slide-up"
+        >
+          <List renderHeader={() => <div>钱包信息</div>} className="popup-list">
+            <InputItem
+              value={this.state.newAddress}
+            >钱包地址</InputItem>
+            <InputItem
+              value={this.state.newPrivateKey}
+            >钱包密钥</InputItem>
+            <InputItem
+              value={this.state.newMnemonic}
+            >钱包助记词</InputItem>
+            <List.Item>
+              <Button type="primary" onClick={this.onClose('modal2')}>我已保存</Button>
+            </List.Item>
+          </List>
         </Modal>
       </div>
     )
