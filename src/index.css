@@ -38,6 +38,14 @@ body {
   margin-right: 1rem;
 }
 
+.page-title .crix {
+  margin-left: 1rem;
+}
+
+.news-list {
+  padding: 0 1rem;
+}
+
 .am-swipe {
   border-radius: 5px;
 }

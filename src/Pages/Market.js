@@ -6,6 +6,7 @@ import {store} from '../Utils'
 
 import NoticeBar from '../Components/NoticeBar'
 import CoinCardList from '../Components/CoinCardList'
+import CryptoIndex from '../Components/CryptoIndex'
 
 export default class Market extends Component {
     constructor(props) {
@@ -75,6 +76,7 @@ export default class Market extends Component {
                 <div className="page-title">
                     <img alt="market-icon" src="https://png.icons8.com/dusk/50/000000/statistics.png" />
                     <h2>行情</h2>
+                    <CryptoIndex />
                     <Icon onClick={this.showModal} type="search" size={'sm'} />
                 </div>
                 <div className="page-container">

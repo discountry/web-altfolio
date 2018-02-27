@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Altfolio from './Pages/Altfolio';
 import Market from './Pages/Market';
 import Exchange from './Pages/Exchange';
+import News from './Pages/News';
 
 import { TabBar } from 'antd-mobile';
 
@@ -10,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'marketTab',
+      selectedTab: 'newsTab',
     };
   }
 
@@ -83,9 +84,35 @@ class App extends Component {
             {this.renderContent(Market)}
           </TabBar.Item>
           <TabBar.Item
+            icon={
+              <div style={{
+                width: '22px',
+                height: '22px',
+                background: 'url(https://png.icons8.com/wired/50/000000/news.png) center center /  21px 21px no-repeat' }}
+              />
+            }
+            selectedIcon={
+              <div style={{
+                width: '22px',
+                height: '22px',
+                background: 'url(https://png.icons8.com/dusk/50/000000/news.png) center center /  21px 21px no-repeat' }}
+              />
+            }
+            title="快讯"
+            key="News"
+            selected={this.state.selectedTab === 'newsTab'}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'newsTab',
+              });
+            }}
+          >
+            {this.renderContent(News)}
+          </TabBar.Item>
+          <TabBar.Item
             icon={{ uri: 'https://png.icons8.com/wired/50/000000/bank-cards.png' }}
             selectedIcon={{ uri: 'https://png.icons8.com/dusk/50/000000/bank-cards.png' }}
-            title="汇率"
+            title="钱包"
             key="Exchange"
             selected={this.state.selectedTab === 'exchangeTab'}
             onPress={() => {
