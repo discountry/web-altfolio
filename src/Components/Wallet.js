@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ethers from 'ethers'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
-import { Icon, Steps, Toast, InputItem, List, WhiteSpace } from 'antd-mobile'
+import { Icon, Steps, Toast, InputItem, List, WhiteSpace, Modal } from 'antd-mobile'
 
 import {store} from '../Utils'
+
+window.ethers = ethers
 
 export default class Wallet extends Component {
   constructor(props) {
     super(props)
     this.state = {
       address: store.get('walletAddress') ? store.get('walletAddress') : '',
+      privateKey: store.get('walletPrivateKey') ? store.get('walletPrivateKey') : '',
+      transferAddress: '',
+      amount: '0.0000',
       balance: 0,
       transations: [],
     }
@@ -18,6 +24,32 @@ export default class Wallet extends Component {
   handleUpdateAddress(address) {
     this.setState({
       address
+    })
+  }
+  handleUpdatePrivateKey(privateKey) {
+    this.setState({
+      privateKey
+    })
+  }
+  handleUpdateTransferAddress(transferAddress) {
+    this.setState({
+      transferAddress
+    })
+  }
+  handleUpdateAmount(amount) {
+    this.setState({
+      amount
+    })
+  }
+  showModal = key => (e) => {
+    e.preventDefault()
+    this.setState({
+      [key]: true,
+    })
+  }
+  onClose = key => () => {
+    this.setState({
+      [key]: false,
     })
   }
   fetchBalance() {
@@ -46,6 +78,33 @@ export default class Wallet extends Component {
           transations: res.data.result,
         })
     })
+  }
+  async confirmTransaction() {
+    if (this.state.privateKey && this.state.amount && this.state.transferAddress) {
+      Toast.loading('提交中...',0)
+      var wallet = new ethers.Wallet(this.state.privateKey);
+      wallet.provider = ethers.providers.getDefaultProvider();
+      var amount = ethers.utils.parseEther(this.state.amount);
+      var address = this.state.transferAddress;
+      var options = {
+          gasLimit: 80000,
+          gasPrice: ethers.utils.bigNumberify("100000000")
+      };
+      try {
+        var transaction = await wallet.send(address, amount, options);
+      } catch (error) {
+        Toast.hide()
+        Toast.fail(error.message,2)
+      }
+      console.log(transaction);
+      if (transaction) {
+        Toast.hide()
+        store.set('walletPrivateKey', this.state.privateKey)
+        Toast.success('转账成功！',1)
+      }
+    } else {
+      Toast.fail('请完整填写密钥、金额、转入地址并确认',2)
+    }
   }
   render() {
     return (
@@ -92,7 +151,60 @@ export default class Wallet extends Component {
                 查询
               </div>
             </List.Item>
+            <InputItem
+              placeholder="0x00"
+              value={this.state.privateKey}
+              onChange={v => this.handleUpdatePrivateKey(v)}
+              clear
+              updatePlaceholder
+            >钱包密钥</InputItem>
+            <InputItem
+              placeholder="0x00"
+              value={this.state.transferAddress}
+              onChange={v => this.handleUpdateTransferAddress(v)}
+              clear
+              updatePlaceholder
+            >转入地址</InputItem>
+            <InputItem
+              type="money"
+              placeholder="0.0000"
+              value={this.state.amount}
+              onChange={v => this.handleUpdateAmount(v)}
+              extra="Ether"
+            >转账金额</InputItem>
+            <List.Item>
+              <div
+                style={{ width: '100%', color: '#108ee9', textAlign: 'center' }}
+                onClick={() => this.confirmTransaction()}
+              >
+                转账
+              </div>
+            </List.Item>
         </List>
+        <a style={{ display: 'block', textAlign: 'center', marginTop: 20, color: '#108ee9' }} onClick={this.showModal('modal1')}>
+          使用条款
+        </a>
+        <WhiteSpace />
+        <Modal
+          visible={this.state.modal1}
+          transparent
+          maskClosable={false}
+          onClose={this.onClose('modal1')}
+          title="使用条款"
+          footer={[{ text: '同意', onPress: () => this.onClose('modal1')() }]}
+          wrapProps={{ onTouchStart: this.onWrapTouchStart }}
+        >
+          <div style={{ textAlign: 'left' }}>
+            <ul>
+              <li>AltFolio 是纯客户端应用。</li>
+              <li>AltFolio 不会在服务器存储您的任何信息。</li>
+              <li>所有信息都存储在您的浏览器当中。</li>
+              <li>使用时请确保您的网络安全，并妥善保管您的密钥。</li>
+              <li>确认提交后 AltFolio 将无法撤销操作，请确保您的输入无误。</li>
+              <li>您在使用 AltFolio 时发生任何财产损失均由您本人承担全部责任。</li>
+            </ul>
+          </div>
+        </Modal>
       </div>
     )
   }

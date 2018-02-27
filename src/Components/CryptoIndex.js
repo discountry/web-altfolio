@@ -10,7 +10,7 @@ export default class CryptoIndex extends Component {
     }
   }
   componentDidMount() {
-    axios.get(`https://cors-anywhere.herokuapp.com/http://crix.hu-berlin.de/data/crix_hf.json`)
+    axios.get(`https://crossorigin.me/http://crix.hu-berlin.de/data/crix_hf.json`)
     .then(res => {
         const change = (res.data[res.data.length - 1].price - res.data[0].price) / res.data[0].price
         this.setState({ 
@@ -20,12 +20,12 @@ export default class CryptoIndex extends Component {
   }
   render() {
     return (
-      <span className="crix">
+      <p className="crix">
         <a style={{color: '#108ee9'}} rel="noopener noreferrer" href="http://crix.hu-berlin.de/" target="_blank">CRIX:</a><Badge text={`${this.state.percentage}%`} style={{ marginLeft: 5, 
           padding: '0 3px', 
           backgroundColor: this.state.percentage > 0 ? 'forestgreen' : 'crimson', 
           borderRadius: 2 }} />
-      </span>
+      </p>
     )
   }
 }

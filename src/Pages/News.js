@@ -3,7 +3,7 @@ import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import NoticeBar from '../Components/NoticeBar'
-import { Steps } from 'antd-mobile'
+import { Steps, Toast } from 'antd-mobile'
 import Loading from '../Components/Loading'
 
 const Step = Steps.Step
@@ -20,21 +20,22 @@ export default class News extends Component {
 
     }
     componentDidMount() {
-      axios.get(`https://cors-anywhere.herokuapp.com/http://www.bishijie.com/api/news/?size=10`)
-      .then(res => {
-          if (res.data.error !== 0) {
-              this.setState({
-                  error: true,
-                  isLoading: false,
-               })
-          } else {
-              console.log(res.data)
-              this.setState({
-                  data: res.data.data,
-                  isLoading: false,
-               })
-          }
-      })
+        Toast.loading('载入中...', 0)
+        axios.get(`https://crossorigin.me/http://www.bishijie.com/api/news/?size=20`)
+        .then(res => {
+            Toast.hide()
+            if (res.data.error !== 0) {
+                this.setState({
+                    error: true,
+                    isLoading: false,
+                })
+            } else {
+                this.setState({
+                    data: res.data.data,
+                    isLoading: false,
+                })
+            }
+        })
     }
     render() {
         return (
@@ -47,7 +48,7 @@ export default class News extends Component {
                     <h2>快讯</h2>
                 </div>
                 <div className="page-container">
-                  {this.state.isLoading ? <Loading /> : 
+                  {this.state.isLoading ? <div><Loading /><Loading /><Loading /></div> : 
                     <Steps className="news-list">
                       {this.state.data[Object.keys(this.state.data)[0]].buttom.map(item => <Step key={item.issue_time} title={moment.unix(item.issue_time).fromNow()} description={item.content} />)}
                     </Steps>

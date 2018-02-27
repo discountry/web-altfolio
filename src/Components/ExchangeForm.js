@@ -52,7 +52,7 @@ export default class ExchangeForm extends Component {
         })
     }
     componentDidMount() {
-        this.handleCryptoChange(this.state.crypto)
+        //this.handleCryptoChange(this.state.crypto)
     }
     render() {
         return (
