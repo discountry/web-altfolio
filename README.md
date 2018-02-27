@@ -27,10 +27,16 @@
 
 ## TODO
 
-* [ ] 排序
-* [ ] Ethereum 交易
+* Token 支持
+* Contracts 支持
 
 ## Changelog
+
+### 2018-02-27
+
+* [x] Ethereum 钱包转账
+* [x] 快讯
+* [x] CRIX 指数
 
 ### 2018-01-16
 
