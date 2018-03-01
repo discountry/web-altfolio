@@ -21,16 +21,16 @@ export default class News extends Component {
             size: prevState.size + 10,
             isLoading: true,
         }))
-        axios.get(`http://cors-proxy.htmldriven.com/?url=http://www.bishijie.com/api/news/?size=${this.state.size}`)
+        axios.get(`https://cors-anywhere.herokuapp.com/http://www.bishijie.com/api/news/?size=${this.state.size}`)
         .then(res => {
-            if (res.data.error !== null) {
+            if (res.data.error !== 0) {
                 this.setState({
                     error: true,
                     isLoading: false,
                 })
             } else {
                 this.setState({
-                    data: JSON.parse(res.data.body).data,
+                    data: res.data.data,
                     isLoading: false,
                 })
             }
