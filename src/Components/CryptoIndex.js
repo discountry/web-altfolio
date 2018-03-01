@@ -10,9 +10,10 @@ export default class CryptoIndex extends Component {
     }
   }
   componentDidMount() {
-    axios.get(`https://crossorigin.me/http://crix.hu-berlin.de/data/crix_hf.json`)
+    axios.get(`http://cors-proxy.htmldriven.com/?url=http://crix.hu-berlin.de/data/crix_hf.json`)
     .then(res => {
-        const change = (res.data[res.data.length - 1].price - res.data[0].price) / res.data[0].price
+        const data = JSON.parse(res.data.body)
+        const change = (data[data.length - 1].price - data[0].price) / data[0].price
         this.setState({ 
           percentage: (change*100).toFixed(2)
          })
