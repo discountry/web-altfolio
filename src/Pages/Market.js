@@ -71,7 +71,7 @@ export default class Market extends Component {
         return (
             <div>
                 <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://www.okex.me/join/1834284">去看看</a>}>
-                    现在注册 OKEX，交易获得最高6折优惠！
+                    现在注册 OKEX，交易获得最高 6 折优惠！
                 </NoticeBar>
                 <div className="page-title">
                     <img alt="market-icon" src="https://img.icons8.com/dusk/50/000000/statistics.png" />
