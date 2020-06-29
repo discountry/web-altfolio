@@ -63,7 +63,7 @@ export default class Altfolio extends Component {
                     交易量大，充提款快，币种全，最好用的加密货币交易平台币安，现在注册领取奖励！
                 </NoticeBar>
                 <div className="page-title">
-                    <img alt="altfolio-icon" src="https://png.icons8.com/dusk/50/000000/currency.png" />
+                    <img alt="altfolio-icon" src="https://img.icons8.com/dusk/50/000000/currency.png" />
                     <h2>资产</h2>
                 </div>
                 <div className="page-container">

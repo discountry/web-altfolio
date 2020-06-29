@@ -38,13 +38,13 @@ class App extends Component {
             icon={<div style={{
               width: '22px',
               height: '22px',
-              background: 'url(https://png.icons8.com/wired/50/000000/currency.png) center center /  21px 21px no-repeat' }}
+              background: 'url(https://img.icons8.com/wired/50/000000/currency.png) center center /  21px 21px no-repeat' }}
             />
             }
             selectedIcon={<div style={{
               width: '22px',
               height: '22px',
-              background: 'url(https://png.icons8.com/dusk/50/000000/currency.png) center center /  21px 21px no-repeat' }}
+              background: 'url(https://img.icons8.com/dusk/50/000000/currency.png) center center /  21px 21px no-repeat' }}
             />
             }
             selected={this.state.selectedTab === 'altfolioTab'}
@@ -62,14 +62,14 @@ class App extends Component {
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://png.icons8.com/wired/50/000000/statistics.png) center center /  21px 21px no-repeat' }}
+                background: 'url(https://img.icons8.com/wired/50/000000/statistics.png) center center /  21px 21px no-repeat' }}
               />
             }
             selectedIcon={
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://png.icons8.com/dusk/50/000000/statistics.png) center center /  21px 21px no-repeat' }}
+                background: 'url(https://img.icons8.com/dusk/50/000000/statistics.png) center center /  21px 21px no-repeat' }}
               />
             }
             title="行情"
@@ -88,14 +88,14 @@ class App extends Component {
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://png.icons8.com/wired/50/000000/news.png) center center /  21px 21px no-repeat' }}
+                background: 'url(https://img.icons8.com/wired/50/000000/news.png) center center /  21px 21px no-repeat' }}
               />
             }
             selectedIcon={
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://png.icons8.com/dusk/50/000000/news.png) center center /  21px 21px no-repeat' }}
+                background: 'url(https://img.icons8.com/dusk/50/000000/news.png) center center /  21px 21px no-repeat' }}
               />
             }
             title="快讯"
@@ -110,8 +110,8 @@ class App extends Component {
             {this.renderContent(News)}
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://png.icons8.com/wired/50/000000/bank-cards.png' }}
-            selectedIcon={{ uri: 'https://png.icons8.com/dusk/50/000000/bank-cards.png' }}
+            icon={{ uri: 'https://img.icons8.com/wired/50/000000/bank-cards.png' }}
+            selectedIcon={{ uri: 'https://img.icons8.com/dusk/50/000000/bank-cards.png' }}
             title="钱包"
             key="Exchange"
             selected={this.state.selectedTab === 'exchangeTab'}

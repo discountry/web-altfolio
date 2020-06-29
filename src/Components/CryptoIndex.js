@@ -10,10 +10,14 @@ export default class CryptoIndex extends Component {
     }
   }
   componentDidMount() {
-    axios.get(`https://cors-anywhere.herokuapp.com/http://crix.hu-berlin.de/data/crix_hf.json`)
+    axios.get(`https://cors-anywhere.herokuapp.com/https://api.huobi.pro/market/detail/merged?symbol=hb10usdt`,{
+      headers: {
+        Origin: 'https://api.huobi.pro/'
+      }
+    })
     .then(res => {
         const data = res.data
-        const change = (data[data.length - 1].price - data[0].price) / data[0].price
+        const change = (data.tick.close - data.tick.open) / data.tick.open
         this.setState({ 
           percentage: (change*100).toFixed(2)
          })

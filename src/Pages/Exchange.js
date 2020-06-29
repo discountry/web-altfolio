@@ -11,7 +11,7 @@ export default class Exchange extends Component {
                     全球最安全、快速、便利的换取加密货币的方式，尽在 Changelly~
                 </NoticeBar>
                 <div className="page-title">
-                    <img alt="market-icon" src="https://png.icons8.com/dusk/50/000000/bank-cards.png" />
+                    <img alt="market-icon" src="https://img.icons8.com/dusk/50/000000/bank-cards.png" />
                     <h2>汇率</h2>
                 </div>
                 <div className="page-container">

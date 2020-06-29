@@ -6,7 +6,7 @@ import {store} from '../Utils'
 
 import NoticeBar from '../Components/NoticeBar'
 import CoinCardList from '../Components/CoinCardList'
-import CryptoIndex from '../Components/CryptoIndex'
+// import CryptoIndex from '../Components/CryptoIndex'
 
 export default class Market extends Component {
     constructor(props) {
@@ -70,13 +70,13 @@ export default class Market extends Component {
     render() {
         return (
             <div>
-                <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://otcbtc.com/referrals/WERYIS">去看看</a>}>
-                    OTCBTC 是目前最流畅、最靠谱、最好用的场外交易平台，支持支付宝、微信、银行卡支付购买BTC、ETH、EOS、USDT、QTUM、ZEC、GXS、BCH 等数字币。现在注册，即可领取比特币红包！
+                <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://www.okex.me/join/1834284">去看看</a>}>
+                    现在注册 OKEX，交易获得最高6折优惠！
                 </NoticeBar>
                 <div className="page-title">
-                    <img alt="market-icon" src="https://png.icons8.com/dusk/50/000000/statistics.png" />
+                    <img alt="market-icon" src="https://img.icons8.com/dusk/50/000000/statistics.png" />
                     <h2>行情</h2>
-                    <CryptoIndex />
+                    {/* <CryptoIndex /> */}
                     <Icon onClick={this.showModal} type="search" size={'sm'} />
                 </div>
                 <div className="page-container">

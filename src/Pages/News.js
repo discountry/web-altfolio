@@ -21,16 +21,17 @@ export default class News extends Component {
             size: prevState.size + 10,
             isLoading: true,
         }))
-        axios.get(`https://cors-anywhere.herokuapp.com/http://www.bishijie.com/api/news/?size=${this.state.size}`)
+        let top_id = this.state.data.top_id ? this.state.data.top_id + 1 : 0
+        axios.get(`https://agg.one/api/lives/${this.state.size}/${top_id}`)
         .then(res => {
-            if (res.data.error !== 0) {
+            if (res.data.news <= 0) {
                 this.setState({
                     error: true,
                     isLoading: false,
                 })
             } else {
                 this.setState({
-                    data: res.data.data,
+                    data: res.data,
                     isLoading: false,
                 })
             }
@@ -40,23 +41,24 @@ export default class News extends Component {
         this.handleLoadNews()
     }
     render() {
+        console.log(this.state.data)
         return (
             <div>
-                <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://otcbtc.com/referrals/WERYIS">去看看</a>}>
-                    OTCBTC 是目前最流畅、最靠谱、最好用的场外交易平台，支持支付宝、微信、银行卡支付购买BTC、ETH、EOS、USDT、QTUM、ZEC、GXS、BCH 等数字币。现在注册，即可领取比特币红包！
+                <NoticeBar action={<a style={{ color: '#f76a24' }} rel="noopener noreferrer" target="_blank" href="https://www.okex.me/join/1834284">去看看</a>}>
+                    现在注册 OKEX，交易获得最高6折优惠！
                 </NoticeBar>
                 <div className="page-title">
-                    <img alt="market-icon" src="https://png.icons8.com/dusk/50/000000/news.png" />
+                    <img alt="market-icon" src="https://img.icons8.com/dusk/50/000000/news.png" />
                     <h2>快讯</h2>
                 </div>
                 <div className="page-container">
                   {Object.keys(this.state.data).length !== 0 &&
                     <Steps className="news-list">
-                      {this.state.data[Object.keys(this.state.data)[0]].buttom.map(item => <Step key={item.issue_time} title={moment.unix(item.issue_time).fromNow()} description={item.content} />)}
+                      {this.state.data.list[0].lives.map(item => <Step key={item.id} title={moment.unix(item.created_at).fromNow()} description={item.content} />)}
                     </Steps>
                   }
                   <WhiteSpace />
-                  <Button loading={this.state.isLoading ? true : false} onClick={this.handleLoadNews} className="refresh-button" type="ghost" icon={<img src="https://png.icons8.com/windows/64/108ee9/refresh.png" alt="" />}>{this.state.isLoading ? '载入中' : '查看更多'}</Button>
+                  <Button loading={this.state.isLoading ? true : false} onClick={this.handleLoadNews} className="refresh-button" type="ghost" icon={<img src="https://img.icons8.com/windows/64/108ee9/refresh.png" alt="" />}>{this.state.isLoading ? '载入中' : '查看更多'}</Button>
                   <WhiteSpace />
                 </div>
             </div>

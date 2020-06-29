@@ -123,7 +123,7 @@ export default class Wallet extends Component {
     return (
       <div>
         <div className="page-title">
-          <img alt="wallet-icon" src="https://png.icons8.com/dusk/50/000000/wallet.png" />
+          <img alt="wallet-icon" src="https://img.icons8.com/dusk/50/000000/wallet.png" />
           <h2>以太坊钱包</h2>
           <Badge text="创建钱包" onClick={() => this.createWallet()}
             style={{
