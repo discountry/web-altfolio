@@ -22,7 +22,12 @@ export default class News extends Component {
             isLoading: true,
         }))
         let top_id = this.state.data.top_id ? this.state.data.top_id + 1 : 0
-        axios.get(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.jinse.com/noah/v2/lives?limit=${this.state.size}&id=${top_id}&flag=down`)}`)
+        axios.get(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.jinse.com/noah/v2/lives?limit=${this.state.size}&id=${top_id}&flag=down`)}`,{
+            headers:{
+                "origin": "https://www.jinse.com",
+                "referer":"https://www.jinse.com/"
+            }
+        })
         .then(res => {
             if (res.data.news <= 0) {
                 this.setState({
