@@ -83,7 +83,7 @@ class App extends Component {
           >
             {this.renderContent(Market)}
           </TabBar.Item>
-          <TabBar.Item
+          {/*<TabBar.Item
             icon={
               <div style={{
                 width: '22px',
@@ -108,7 +108,7 @@ class App extends Component {
             }}
           >
             {this.renderContent(News)}
-          </TabBar.Item>
+        </TabBar.Item>*/}
           <TabBar.Item
             icon={{ uri: 'https://img.icons8.com/wired/50/000000/bank-cards.png' }}
             selectedIcon={{ uri: 'https://img.icons8.com/dusk/50/000000/bank-cards.png' }}
