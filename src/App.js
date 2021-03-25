@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Altfolio from './Pages/Altfolio';
 import Market from './Pages/Market';
 import Exchange from './Pages/Exchange';
-import News from './Pages/News';
+//import News from './Pages/News';
 
 import { TabBar } from 'antd-mobile';
 
