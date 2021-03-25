@@ -36,7 +36,7 @@ export const possessionList = [
         possession: 0,
     },
     {
-        symbol: 'IOT',
+        symbol: 'IOTA',
         coinName: 'IOTA',
         ImageUrl: 'miota@2x.png',
         possession: 0,
