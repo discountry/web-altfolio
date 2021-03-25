@@ -31,6 +31,7 @@ class App extends Component {
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
           barTintColor="white"
+          hidden={false}
         >
           <TabBar.Item
             title="资产"
