@@ -12,12 +12,13 @@ class App extends Component {
     super(props);
     this.state = {
       selectedTab: 'altfolioTab',
+      hidden: false,
     };
   }
 
   renderContent(Page) {
     return (
-      <div>
+      <div  style={{height: '100%'}}>
         <div className="blur-block"></div>
         <Page />
       </div>
@@ -31,7 +32,7 @@ class App extends Component {
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
           barTintColor="white"
-          hidden={false}
+          hidden={this.state.hidden}
         >
           <TabBar.Item
             title="资产"
@@ -54,7 +55,6 @@ class App extends Component {
                 selectedTab: 'altfolioTab',
               });
             }}
-            data-seed="logId"
           >
             {this.renderContent(Altfolio)}
           </TabBar.Item>
