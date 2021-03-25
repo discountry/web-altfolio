@@ -121,7 +121,7 @@ export default class Wallet extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{paddingBottom: '5rem'}}>
         <div className="page-title">
           <img alt="wallet-icon" src="https://img.icons8.com/dusk/50/000000/wallet.png" />
           <h2>以太坊钱包</h2>
