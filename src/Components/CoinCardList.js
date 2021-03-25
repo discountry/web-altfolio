@@ -26,7 +26,7 @@ export default class CoinCardList extends Component {
     }
     render() {
         return (
-            <div>
+            <div style={{paddingBottom: '5rem'}}>
                 {this.props.coinsList.map(info => <CoinCard key={info.symbol} {...info} removeFromList={this.props.handleremoveFromList} handleShowModal={this.handleShowModal} />)}
                 <Modal
                     popup
