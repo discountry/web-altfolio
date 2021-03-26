@@ -105,7 +105,7 @@ export const watchList = [
         ImageUrl: 'xem@2x.png',
     },
     {
-        symbol: 'IOT',
+        symbol: 'IOTA',
         coinName: 'IOTA',
         ImageUrl: 'miota@2x.png',
     },
@@ -163,7 +163,7 @@ export const selectList = [
     },
     {
         label: 'IOTA',
-        value: 'IOT',
+        value: 'IOTA',
     },
     {
         label: 'EOS',
